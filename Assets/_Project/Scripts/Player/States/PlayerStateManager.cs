@@ -18,11 +18,10 @@ namespace PlayerState
     
         
         
-        //GameState
         IState _currentStateHandler; 
         PlayerStates _currentState = PlayerStates.None;
         List<IState> _states;
-        //
+        
         
     
         
@@ -30,7 +29,6 @@ namespace PlayerState
         public void Construct(
             IdleState ıdle, RunningState running,DeadState dead,FinishState finish) 
         {
-            //  _view = view;
             _states = new List<IState>
             {
                 ıdle,running,dead,finish

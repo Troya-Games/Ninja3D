@@ -1,7 +1,6 @@
 ﻿using System;
-using UniRx;
+using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 public class EnemyObservable
 {
@@ -10,7 +9,8 @@ public class EnemyObservable
     [Serializable]
     public class Settings
     {
-        public float _targetedEnemyCount;
+        public List<GameObject> _targetedEnemyList;
+        public int _currentTarget;
         public float _deadEnemyCount;
         public float _totalEnemyCount;
     }

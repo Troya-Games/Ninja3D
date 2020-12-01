@@ -13,7 +13,7 @@ public class EnemyFacade : MonoBehaviour
         _model = enemyModel;
     }
 
-    public bool IsTargeted
+    public bool ısAlreadyTargeted
     {
         get => _model.IsTargeted;
         set => _model.IsTargeted = value;

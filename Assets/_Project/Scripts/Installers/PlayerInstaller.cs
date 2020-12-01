@@ -20,8 +20,8 @@ namespace Installers
             Container.Bind<Player>().AsSingle()
                 .WithArguments(_settings.Rigidbody,_settings.Animator
                     ,_settings.LineRenderer,_settings.Collider);
-            Container.BindInterfacesAndSelfTo<PlayerPathFinder>().AsSingle();
-            Container.BindInterfacesAndSelfTo<PlayerMove>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayerInputAndPathHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayerMoveHandler>().AsSingle();
             StateManagerInstall();
             Container.Bind<PlayerColliderHandler>().AsSingle();
 

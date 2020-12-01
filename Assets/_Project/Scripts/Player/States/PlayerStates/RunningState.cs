@@ -5,7 +5,7 @@ namespace PlayerState
 {
     public class RunningState : IState
     {
-        private Player _player;
+        private readonly Player _player;
 
         RunningState(Player player)
         {
