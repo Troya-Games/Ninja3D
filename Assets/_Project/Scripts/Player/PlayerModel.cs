@@ -4,17 +4,15 @@ namespace PlayerBehaviors
 {
     public class Player
     {
-        readonly Rigidbody _rigidBody;
-
-
-        public Player(Rigidbody rigidBody, Animator animator)
+        
+        public Player(Rigidbody rigidBody, Animator animator,LineRenderer lineRenderer)
         {
-            _rigidBody = rigidBody;
+            RigidBody = rigidBody;
             GetAnimator  = animator;
+            LineRenderer = lineRenderer;
         }
 
-
-      
+        
 
         public bool IsDead
         {
@@ -23,32 +21,34 @@ namespace PlayerBehaviors
 
         public Animator GetAnimator { get; }
 
-
-
-        public Vector3 LookDir => -_rigidBody.transform.right;
+        
+        public Vector3 LookDir => -RigidBody.transform.right;
 
         public Quaternion Rotation
         {
-            get => _rigidBody.rotation;
-            set => _rigidBody.rotation = value;
+            get => RigidBody.rotation;
+            set => RigidBody.rotation = value;
         }
 
         public Vector3 Position
         {
-            get => _rigidBody.position;
-            set => _rigidBody.position = value;
+            get => RigidBody.position;
+            set => RigidBody.position = value;
         }
 
 
         public void AddForce(Vector3 force)
         {
-            _rigidBody.AddForce(force);
+            RigidBody.AddForce(force);
         }
         
 
-        public Rigidbody RigidBody => _rigidBody;
-
-      
+        public Rigidbody RigidBody { get; }
+        
+        public LineRenderer LineRenderer { get; }
+ 
+        
+       
 
        
     }

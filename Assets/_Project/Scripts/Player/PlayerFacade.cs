@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 namespace PlayerBehaviors
@@ -29,7 +30,12 @@ namespace PlayerBehaviors
 
 
         public Rigidbody Rigidbody => _model.RigidBody;
-        
+
+        public LineRenderer Linerenderer => _model.LineRenderer;
+
+    
+
+     
 
     }
 

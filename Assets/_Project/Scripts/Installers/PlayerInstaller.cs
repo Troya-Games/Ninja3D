@@ -2,6 +2,7 @@ using System;
 using PlayerBehaviors;
 using PlayerState;
 using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
 
 /// <summary>
@@ -17,8 +18,9 @@ namespace Installers
         public override void InstallBindings()
         {
             Container.Bind<Player>().AsSingle()
-                .WithArguments(_settings.Rigidbody,_settings.Animator);
-        
+                .WithArguments(_settings.Rigidbody,_settings.Animator
+                    ,_settings.LineRenderer);
+            Container.BindInterfacesTo<LineDrawer>().AsSingle();
             StateManagerInstall();
         
         }
@@ -26,7 +28,6 @@ namespace Installers
         void StateManagerInstall()
         {
             Container.BindInterfacesAndSelfTo<PlayerStateManager>().AsSingle();
-        
             Container.Bind<IdleState>().AsSingle();
             Container.Bind<RunningState>().AsSingle();
             Container.Bind<DeadState>().AsSingle();
@@ -38,6 +39,7 @@ namespace Installers
         {
             public Rigidbody Rigidbody;
             public Animator Animator;
+            public LineRenderer LineRenderer;
         }
     }
 }
