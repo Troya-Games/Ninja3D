@@ -19,6 +19,12 @@ public class EnemyFacade : MonoBehaviour
         set => _model.IsTargeted = value;
     }
 
+    public bool IsDead
+    {
+        get => _model.IsDead;
+        set => _model.IsDead=value;
+    }
+
     public Vector3 Position
     {
         get => _model.Position;

@@ -15,8 +15,10 @@ namespace Installers
         public override void InstallBindings()
         {
             GameSignalsInstaller.Install(Container); //Signal Containerini yükle
-            
+
+            Container.BindInterfacesAndSelfTo<EnemyObservable>().AsSingle();
             Container.BindInstance(_SceneMonoSettings.UIMANAGER_settings).AsSingle();
+            Container.BindInstance(_SceneMonoSettings.EnemyObservableSettings).AsSingle();
           
         }
 
@@ -24,6 +26,7 @@ namespace Installers
         public class SceneMonoSettings
         {
             public UIManager.Settings UIMANAGER_settings;
+            public EnemyObservable.Settings EnemyObservableSettings;
         }
 
    

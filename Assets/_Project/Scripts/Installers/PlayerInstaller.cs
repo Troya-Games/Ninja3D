@@ -19,10 +19,12 @@ namespace Installers
         {
             Container.Bind<Player>().AsSingle()
                 .WithArguments(_settings.Rigidbody,_settings.Animator
-                    ,_settings.LineRenderer);
-            Container.BindInterfacesTo<LineDrawer>().AsSingle();
+                    ,_settings.LineRenderer,_settings.Collider);
+            Container.BindInterfacesAndSelfTo<PlayerPathFinder>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayerMove>().AsSingle();
             StateManagerInstall();
-        
+            Container.Bind<PlayerColliderHandler>().AsSingle();
+
         }
 
         void StateManagerInstall()
@@ -40,6 +42,7 @@ namespace Installers
             public Rigidbody Rigidbody;
             public Animator Animator;
             public LineRenderer LineRenderer;
+            public BoxCollider Collider;
         }
     }
 }

@@ -33,9 +33,14 @@ namespace PlayerBehaviors
 
         public LineRenderer Linerenderer => _model.LineRenderer;
 
-    
+        public BoxCollider Collider => _model.Collider;
 
-     
+        public void Addforce(Vector3 test) => _model.AddForce(test);
+
+
+
+        
+
 
     }
 

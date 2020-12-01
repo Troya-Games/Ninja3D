@@ -5,11 +5,13 @@ namespace PlayerBehaviors
     public class Player
     {
         
-        public Player(Rigidbody rigidBody, Animator animator,LineRenderer lineRenderer)
+        public Player(Rigidbody rigidBody, Animator animator,LineRenderer lineRenderer,BoxCollider collider)
         {
             RigidBody = rigidBody;
             GetAnimator  = animator;
             LineRenderer = lineRenderer;
+            Collider = collider;
+
         }
 
         
@@ -47,6 +49,7 @@ namespace PlayerBehaviors
         
         public LineRenderer LineRenderer { get; }
  
+        public BoxCollider Collider { get; }
         
        
 

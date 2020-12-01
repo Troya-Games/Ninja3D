@@ -16,6 +16,11 @@ public class EnemyModel
         get; set;
     }
 
+    public bool IsDead
+    {
+        get; set;
+    }
+
 
     
     public Animator Animator { get; }
