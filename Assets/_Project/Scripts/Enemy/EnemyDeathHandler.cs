@@ -21,7 +21,12 @@ public class EnemyDeathHandler: IInitializable
         _deathObservable.Subscribe(x =>
         {
             _enemy.Animator.Play("DeathState");
-            _settings._deathParticle.Play();
+            foreach (var particle in _settings._deathParticle)
+            {
+                particle.Play();
+            }
+
+            
             Observable.Timer(TimeSpan.FromSeconds(0.5f)).Subscribe(y => _enemy.IsDead = false);
         });
     }
@@ -29,6 +34,6 @@ public class EnemyDeathHandler: IInitializable
     [Serializable]
     public class Settings
     {
-        public ParticleSystem _deathParticle;
+        public ParticleSystem[] _deathParticle;
     }
 }
