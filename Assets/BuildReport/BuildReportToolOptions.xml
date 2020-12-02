@@ -2,7 +2,7 @@
 <BuildReportToolOptions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <BuildReportFolderName>UnityBuildReports</BuildReportFolderName>
   <SaveType>1</SaveType>
-  <CollectBuildInfo>true</CollectBuildInfo>
+  <CollectBuildInfo>false</CollectBuildInfo>
   <CalculateAssetDependencies>true</CalculateAssetDependencies>
   <CalculateAssetDependenciesOnUnusedToo>false</CalculateAssetDependenciesOnUnusedToo>
   <GetProjectSettings>true</GetProjectSettings>

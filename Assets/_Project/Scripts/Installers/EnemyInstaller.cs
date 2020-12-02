@@ -5,9 +5,12 @@ using Zenject;
 public class EnemyInstaller : MonoInstaller
 {
     public Settings _settings;
+    public EnemyDeathHandler.Settings _deathSettings;
     public override void InstallBindings()
     {
         Container.Bind<EnemyModel>().AsSingle().WithArguments(_settings.Rigidbody, _settings.Animator);
+        Container.BindInterfacesTo<EnemyDeathHandler>().AsSingle();
+        Container.BindInstance(_deathSettings).AsSingle();
     }
     
     [Serializable]

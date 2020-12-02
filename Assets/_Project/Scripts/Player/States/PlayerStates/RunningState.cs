@@ -16,6 +16,7 @@ namespace PlayerState
         {
             Debug.Log("RunnigStateEnter");
             _player.LineRenderer.enabled = false;
+            _player.GetAnimator.Play("RUNState");
 
 
         }
