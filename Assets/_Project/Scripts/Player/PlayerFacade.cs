@@ -25,10 +25,8 @@ namespace PlayerBehaviors
 
         public Quaternion Rotation => _model.Rotation;
 
-
         public Animator Animator => _model.GetAnimator;
-
-
+        
         public Rigidbody Rigidbody => _model.RigidBody;
 
         public LineRenderer Linerenderer => _model.LineRenderer;
@@ -36,11 +34,6 @@ namespace PlayerBehaviors
         public BoxCollider Collider => _model.Collider;
 
         public void Addforce(Vector3 test) => _model.AddForce(test);
-
-
-
-        
-
 
     }
 
