@@ -996,8 +996,8 @@ MonoBehaviour:
       _deadEnemyCount: 0
       _totalEnemyCount: 4
     FinalEnemySettings:
-      FinalEnemy: {fileID: 0}
-      FinalParticle: {fileID: 0}
+      FinalEnemy: {fileID: 1539115192}
+      FinalParticle: {fileID: 322413715}
 --- !u!114 &159795213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26208,6 +26208,11 @@ Transform:
   m_Father: {fileID: 761004905}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1539115192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1948584096816549035, guid: a057b5d2dc1f6fc4db17662a2d9ac695, type: 3}
+  m_PrefabInstance: {fileID: 1596994538}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1545137280
 PrefabInstance:
   m_ObjectHideFlags: 0
