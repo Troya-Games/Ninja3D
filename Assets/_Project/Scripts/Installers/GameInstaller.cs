@@ -17,8 +17,10 @@ namespace Installers
             GameSignalsInstaller.Install(Container); //Signal Containerini yükle
 
             Container.BindInterfacesAndSelfTo<EnemyObservable>().AsSingle();
+            Container.BindInterfacesTo<FinalEnemySetter>().AsSingle();
             Container.BindInstance(_SceneMonoSettings.UIMANAGER_settings).AsSingle();
             Container.BindInstance(_SceneMonoSettings.EnemyObservableSettings).AsSingle();
+            Container.BindInstance(_SceneMonoSettings.FinalEnemySettings).AsSingle();
           
         }
 
@@ -27,6 +29,7 @@ namespace Installers
         {
             public UIManager.Settings UIMANAGER_settings;
             public EnemyObservable.Settings EnemyObservableSettings;
+            public FinalEnemySetter.Settings FinalEnemySettings;
         }
 
    

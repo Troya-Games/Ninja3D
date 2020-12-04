@@ -1,8 +1,11 @@
-﻿using PlayerBehaviors;
+﻿using System;
+using DG.Tweening;
+using PlayerBehaviors;
 using PlayerState;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 [RequireComponent(typeof(Collider))]
@@ -12,16 +15,24 @@ public class PlayerColliderHandler: MonoBehaviour
    private PlayerMoveHandler _playerMoveHandler;
    private EnemyObservable.Settings _enemyObservable;
    private PlayerStateManager _stateManager;
-
- [Inject]public void Construct(PlayerMoveHandler playerMoveHandler, EnemyObservable.Settings enemyObservable,PlayerStateManager stateManager)
-   {
+   private SliceController _controller;
+   
+ [Inject]public void Construct(PlayerMoveHandler playerMoveHandler, Player player
+     ,EnemyObservable.Settings enemyObservable,PlayerStateManager stateManager,SliceController sliceController
+    )
+ {
+       _player = player;
        _playerMoveHandler = playerMoveHandler;
        _enemyObservable = enemyObservable;
        _stateManager = stateManager;
-   }
+       _controller = sliceController;
+       
+ }
+
  
-  private void Awake()
+ private void Awake()
   {
+      
       this.OnTriggerEnterAsObservable()
           .Where(_ => _.gameObject.CompareTag("Enemy") & 
                       !_.gameObject.GetComponent<EnemyFacade>().IsDead &
@@ -41,6 +52,13 @@ public class PlayerColliderHandler: MonoBehaviour
                   }
                   _enemyObservable._currentTarget++;
               }
+          });
+
+      this.OnTriggerEnterAsObservable().Where(_ => _.gameObject.CompareTag("Final"))
+          .Subscribe(_ =>
+          {
+              _stateManager.ChangeState(PlayerStateManager.PlayerStates.FinalState);
+              _.gameObject.GetComponent<SkinnedMeshRenderer>().enabled=false;
           });
   }
 

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ModestTree;
 using PlayerBehaviors;
+using PlayerState;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -23,11 +21,14 @@ public class PlayerInputAndPathHandler: IInitializable
     readonly LayerMask layer_mask;
     private RaycastHit _enemyHit;
 
-    PlayerInputAndPathHandler(PlayerFacade player,TickableManager tickableManager,EnemyObservable.Settings enemyObservable)
+    private PlayerStateManager _stateManager;
+    PlayerInputAndPathHandler(PlayerFacade player,TickableManager tickableManager
+        ,EnemyObservable.Settings enemyObservable,PlayerStateManager stateManager)
     {
         _player = player;
         _tickableManager = tickableManager;
         _enemyObservable = enemyObservable;
+        _stateManager = stateManager;
         _camera=Camera.main;
         layer_mask = LayerMask.GetMask("Enemy");
         _enemyObservable._targetedEnemyList.Add(_player.gameObject);
@@ -39,14 +40,17 @@ public class PlayerInputAndPathHandler: IInitializable
         _ınputObservable=_tickableManager.TickStream.Select(x => Input.touches)
             .Where(x =>
             {
+                if (_stateManager.CurrentState!= PlayerStateManager.PlayerStates.IdleState)
+                {return false;}
                 foreach (var touch in x)
                 {
-                    switch (touch.phase)
-                    {
-                        case TouchPhase.Began:
-                            return CheckRayCast();
-                    }
+                        switch (touch.phase)
+                        {
+                            case TouchPhase.Began:
+                                return CheckRayCast();
+                        } 
                 }
+
                 return false;
             }).Subscribe(x => DetectEnemy(_enemyHit));
     }
@@ -99,6 +103,7 @@ public class PlayerInputAndPathHandler: IInitializable
     {
         if (_enemyObservable._targetedEnemyList[_enemyObservable._targetedEnemyList.LastIndex()]==_enemyHit.collider.gameObject)
         {
+            
             return true;
         }
 

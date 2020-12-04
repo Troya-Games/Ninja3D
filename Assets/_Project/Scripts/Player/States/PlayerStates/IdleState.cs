@@ -15,8 +15,8 @@ namespace PlayerState
         public void EnterState()
         {
             _UISettings._gamePreUI.SetActive(true);
-         
-           
+          
+            ResetMeshSlicer();
         }
 
         public void ExitState()
@@ -33,6 +33,13 @@ namespace PlayerState
         {
          
         }
+        private void ResetMeshSlicer()
+        {
+            MeshSlicer.totalHit = 0;
+            MeshSlicer.totalGameObjects.Clear();
+        }
     }
+    
+   
 
 }

@@ -12,6 +12,7 @@ namespace PlayerState
             IdleState,
             RunningState,
             DeadState,
+            FinalState,
             FinishState,
             None
         }
@@ -27,11 +28,11 @@ namespace PlayerState
         
         [Inject]
         public void Construct(
-            IdleState ıdle, RunningState running,DeadState dead,FinishState finish) 
+            IdleState ıdle, RunningState running,DeadState dead,FinalState final,FinishState finish) 
         {
             _states = new List<IState>
             {
-                ıdle,running,dead,finish
+                ıdle,running,dead,final,finish
             };
         }
         

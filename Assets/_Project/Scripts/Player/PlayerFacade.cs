@@ -13,6 +13,7 @@ namespace PlayerBehaviors
         public void Construct(Player player)
         {
             _model = player;
+            
         }
 
         public bool IsDead => _model.IsDead;
@@ -34,7 +35,8 @@ namespace PlayerBehaviors
         public BoxCollider Collider => _model.Collider;
 
         public void Addforce(Vector3 test) => _model.AddForce(test);
-
+        
+    
     }
 
 
