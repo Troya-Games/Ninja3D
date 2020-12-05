@@ -250,8 +250,7 @@ public static class MeshSlicer
 		sliceMeshCollider.sharedMesh = sliceMesh;
 		sliceMeshCollider.convex = true;
 		sliceMeshCollider.material = obj.GetComponent<Collider>().material;
-		slice.GetComponent<Rigidbody>().velocity = obj.GetComponent<Rigidbody>().velocity;
-		
+
 		slice.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 		totalGameObjects.Add(slice);
 		//TODO BURLAR DÜZELTİRLİR

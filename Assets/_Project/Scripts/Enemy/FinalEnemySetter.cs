@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using System.Linq;
 using UniRx;
 using UnityEngine;
@@ -15,16 +15,13 @@ public class FinalEnemySetter: IInitializable
 
    private StateEnum _stateEnum;
    
-   
 
       FinalEnemySetter(Settings settings,EnemyObservable.Settings enemyObservable,TickableManager tickableManager)
    {
       _settings = settings;
       _enemyObservable = enemyObservable;
       _tickableManager = tickableManager;
-
-
-    
+      
    }
    
    
@@ -42,12 +39,21 @@ public class FinalEnemySetter: IInitializable
          .Where(x => x.Count == _enemyObservable._totalEnemyCount+1 & _stateEnum== StateEnum.nonsetted )
          .Subscribe(x =>
          {
-            _stateEnum = StateEnum.setted;
-            
-            _settings.FinalEnemy.transform.SetParent(_enemyObservable._targetedEnemyList.Last().gameObject.transform);
-            _settings.FinalEnemy.transform.localPosition=Vector3.zero;
-            _settings.FinalEnemy.transform.localRotation = new Quaternion(0, 0, 0, 0);
+            x.Last().tag = "Final"; 
+            SetFinalEnemy();
          });
+   }
+
+   private void SetFinalEnemy()
+   {
+      var _lastEnemy = _enemyObservable._targetedEnemyList.Last().gameObject.transform;
+      _stateEnum = StateEnum.setted;
+
+     _settings.FinalEnemy.transform.SetPositionAndRotationTo(_lastEnemy);
+
+      //_settings.FinalEnemy.transform.ResetLocal();
+
+      _settings.FinalParticle.transform.SetPositionAndRotationTo(_lastEnemy);
    }
    
    private enum StateEnum

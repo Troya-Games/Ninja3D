@@ -1,16 +1,21 @@
-﻿using UnityEngine;
+﻿using PlayerState;
+using UnityEngine;
+using Zenject;
 
 namespace PlayerBehaviors
 {
     public class Player
     {
         
-        public Player(Rigidbody rigidBody, Animator animator,LineRenderer lineRenderer,BoxCollider collider)
+        public Player(Rigidbody rigidBody, Animator animator
+            ,LineRenderer lineRenderer,BoxCollider collider,SkinnedMeshRenderer meshRenderer,GameObject[] weapons)
         {
             RigidBody = rigidBody;
             GetAnimator  = animator;
             LineRenderer = lineRenderer;
             Collider = collider;
+            MeshRenderer = meshRenderer;
+            Weapons = weapons;
 
         }
 
@@ -52,8 +57,11 @@ namespace PlayerBehaviors
         public BoxCollider Collider { get; }
         
        
+        public SkinnedMeshRenderer MeshRenderer { get; }
 
-       
+        public GameObject[] Weapons { get; }
+        
+      [Inject] public PlayerStateManager PlayerStateManager {get;}
     }
 }
     

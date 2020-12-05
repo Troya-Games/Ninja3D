@@ -19,7 +19,7 @@ namespace Installers
         {
             Container.Bind<Player>().AsSingle()
                 .WithArguments(_settings.Rigidbody,_settings.Animator
-                    ,_settings.LineRenderer,_settings.Collider);
+                    ,_settings.LineRenderer,_settings.Collider,_settings.MeshRenderer,_settings.Weapons);
             Container.BindInterfacesAndSelfTo<PlayerInputAndPathHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerMoveHandler>().AsSingle();
             StateManagerInstall();
@@ -44,6 +44,8 @@ namespace Installers
             public Animator Animator;
             public LineRenderer LineRenderer;
             public BoxCollider Collider;
+            public SkinnedMeshRenderer MeshRenderer;
+            public GameObject[] Weapons;
         }
     }
 }

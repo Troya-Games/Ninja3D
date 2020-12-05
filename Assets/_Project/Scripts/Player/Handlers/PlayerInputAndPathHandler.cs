@@ -67,10 +67,10 @@ public class PlayerInputAndPathHandler: IInitializable
             hitFacade.ısAlreadyTargeted = false;
             _enemyObservable._targetedEnemyList.RemoveAt(_enemyObservable._targetedEnemyList.LastIndex());
         }
-        else
+        else if ( !hitFacade.ısAlreadyTargeted)
         {
             hitFacade.ısAlreadyTargeted = true;
-            _enemyObservable._targetedEnemyList.Add(hitGO);
+            _enemyObservable._targetedEnemyList.Add(hitGO); 
         }
         _lineRenderer.positionCount = _enemyObservable._targetedEnemyList.Count;
         DisplayLineDestination();

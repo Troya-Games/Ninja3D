@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using PlayerState;
+using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
@@ -35,8 +36,12 @@ namespace PlayerBehaviors
         public BoxCollider Collider => _model.Collider;
 
         public void Addforce(Vector3 test) => _model.AddForce(test);
-        
-    
+
+        public SkinnedMeshRenderer MeshRenderer => _model.MeshRenderer;
+
+        public GameObject[] Weapons => _model.Weapons;
+
+        public PlayerStateManager StateManager => _model.PlayerStateManager;
     }
 
 

@@ -5,10 +5,11 @@
 public class EnemyModel
 {
     
-    EnemyModel(Rigidbody rigidBody,Animator animator)
+    EnemyModel(Rigidbody rigidBody,Animator animator,SkinnedMeshRenderer meshRenderer)
     {
         RigidBody = rigidBody;
         Animator = animator;
+        MeshRenderer = meshRenderer;
     }
     
     public bool IsTargeted
@@ -47,5 +48,6 @@ public class EnemyModel
     
     public Rigidbody RigidBody { get; }
     
+    public SkinnedMeshRenderer MeshRenderer { get; }
 
 }

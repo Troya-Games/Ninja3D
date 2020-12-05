@@ -2,12 +2,23 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using PlayerBehaviors;
+using PlayerState;
 using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 
 public class SliceController : MonoBehaviour
 {
+	
+	
+	public List<GameObject> _Objects = new List<GameObject>();
+	public Image _healthImage;
+	public ParticleSystem _deathParticle;
+	public PlayerFacade _playerFacade;
+	public GameObject _FinalGameObject;
+	private LayerMask LayerMask;
+
 	Vector3 sliceStartPos, sliceEndPos;
 	bool isSlicing = false;
 	GameObject startUI, endUI, lineUI;
@@ -15,22 +26,21 @@ public class SliceController : MonoBehaviour
 	RectTransform lineRectTransform;
 	float lineWidth;
 	private Camera _camera;
-
-	private LayerMask LayerMask;
 	private RaycastHit _startHitPoint;
-
-	public List<GameObject> _Objects = new List<GameObject>();
-
-	public Image _healthImage;
-	public ParticleSystem _deathParticle;
-	public Animator _playerAnimator;
-
 	Vector3 mousePos;
-
+	private SettingsInstalled _settingsEnum;
+	enum  SettingsInstalled
+	{
+		NotInstalled,
+		Installed
+		
+	}
+	
 	private void OnEnable()
 	{
-		Debug.Log("enable");
-		_healthImage.enabled = true;
+		
+		MeshSlicer.totalHit = 0;
+		MeshSlicer.totalGameObjects.Clear();
 	}
 
 	private void OnDisable()
@@ -40,33 +50,44 @@ public class SliceController : MonoBehaviour
 
 	void Awake()
 	{
-		_camera = Camera.main;
-		MeshSlicer.uvCamera = Instantiate((GameObject) Resources.Load("Prefabs/UV_Camera"));
-		GameObject canvas = GameObject.Find("Canvas");
-		GameObject pointPrefab = (GameObject) Resources.Load("Prefabs/Slice_Point");
-		GameObject linePrefab = (GameObject) Resources.Load("Prefabs/Slice_Line");
-		GameObject _hitParticlePrefab = (GameObject) Resources.Load("Prefabs/Hit_Particle");
-		startUI = Canvas.Instantiate(pointPrefab);
-		endUI = Canvas.Instantiate(pointPrefab);
-		lineUI = Canvas.Instantiate(linePrefab);
-		_hitParticle = Instantiate(_hitParticlePrefab);
-		startUI.transform.SetParent(canvas.transform);
-		endUI.transform.SetParent(canvas.transform);
-		lineUI.transform.SetParent(canvas.transform);
-		startUI.SetActive(false);
-		endUI.SetActive(false);
-		lineUI.SetActive(false);
-		lineRectTransform = lineUI.GetComponent<RectTransform>();
-		lineWidth = lineRectTransform.rect.width;
-		LayerMask = LayerMask.GetMask("Enemy");
+		if (_settingsEnum == SettingsInstalled.NotInstalled)
+		{
+			_camera = Camera.main;
+			MeshSlicer.uvCamera = Instantiate((GameObject) Resources.Load("Prefabs/UV_Camera"));
+			GameObject canvas = GameObject.Find("Canvas");
+			GameObject pointPrefab = (GameObject) Resources.Load("Prefabs/Slice_Point");
+			GameObject linePrefab = (GameObject) Resources.Load("Prefabs/Slice_Line");
+			GameObject _hitParticlePrefab = (GameObject) Resources.Load("Prefabs/Hit_Particle");
+			startUI = Canvas.Instantiate(pointPrefab);
+			endUI = Canvas.Instantiate(pointPrefab);
+			lineUI = Canvas.Instantiate(linePrefab);
+			_hitParticle = Instantiate(_hitParticlePrefab);
+			startUI.transform.SetParent(canvas.transform);
+			endUI.transform.SetParent(canvas.transform);
+			lineUI.transform.SetParent(canvas.transform);
+			startUI.SetActive(false);
+			endUI.SetActive(false);
+			lineUI.SetActive(false);
+			lineRectTransform = lineUI.GetComponent<RectTransform>();
+			lineWidth = lineRectTransform.rect.width;
+			LayerMask = LayerMask.GetMask("Enemy");
 
+		}
+	
 		this.UpdateAsObservable().Select(x => Input.touches)
 			.Where(x =>
 			{
 
-				if (this.enabled)
+				if (_playerFacade.StateManager.CurrentState==PlayerStateManager.PlayerStates.FinalState)
 				{
-					_Objects = MeshSlicer.totalGameObjects;
+					if (_settingsEnum == SettingsInstalled.NotInstalled)
+					{
+						_FinalGameObject?.transform.LookAt(_playerFacade.transform);
+						_healthImage.enabled = true;
+						_Objects = MeshSlicer.totalGameObjects;
+						_settingsEnum = SettingsInstalled.Installed;
+					}
+					
 					foreach (var touch in x) 
 					{ 
 						switch (touch.phase) 
@@ -132,10 +153,8 @@ public class SliceController : MonoBehaviour
 							{
 								this.enabled = false;
 								_deathParticle.Play();
-								_playerAnimator.Play("IDLEState");
-
+								_playerFacade.StateManager.ChangeState(PlayerStateManager.PlayerStates.FinishState); //TODO Burayı düzelt  
 							}
-
 							break;
 					} 
 					} 

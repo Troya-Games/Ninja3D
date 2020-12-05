@@ -8,21 +8,23 @@ using UnityEngine;
 public class FinalState : IState
 {
     private Player _player;
-    private SliceController _sliceController;
     private FinalEnemySetter.Settings _finalEnemySetter;
-    FinalState(Player player,SliceController sliceController,FinalEnemySetter.Settings finalEnemySetter)
+    FinalState(Player player,FinalEnemySetter.Settings finalEnemySetter)
     {
         _player = player;
-        _sliceController = sliceController;
+      
         _finalEnemySetter = finalEnemySetter;
     }
    
     public void EnterState()
     {
+         DOTween.KillAll();
+        _player.RigidBody.ResetVelocity();
+        _player.Position-=4* _player.Collider.transform.forward;
+      
         _player.GetAnimator.Play("FINALState");
-        DOTween.KillAll();
-        _sliceController.enabled = true;
         _finalEnemySetter.FinalEnemy.SetActive(true);
+
     }
 
     public void ExitState()

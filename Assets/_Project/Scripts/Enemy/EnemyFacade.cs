@@ -39,4 +39,7 @@ public class EnemyFacade : MonoBehaviour
 
     public Rigidbody Rigidbody => _model.RigidBody;
 
+    public SkinnedMeshRenderer MeshRenderer => _model.MeshRenderer;
+    
+
 }

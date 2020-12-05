@@ -35,8 +35,7 @@ namespace PlayerState
         }
         private void ResetMeshSlicer()
         {
-            MeshSlicer.totalHit = 0;
-            MeshSlicer.totalGameObjects.Clear();
+           
         }
     }
     

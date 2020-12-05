@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CustomBlends:
   - m_From: FinalCam
-    m_To: IDLE CAM
+    m_To: FinishCam
     m_Blend:
-      m_Style: 1
+      m_Style: 2
       m_Time: 1
       m_CustomCurve:
         serializedVersion: 2

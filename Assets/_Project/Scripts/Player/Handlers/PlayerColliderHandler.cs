@@ -15,26 +15,24 @@ public class PlayerColliderHandler: MonoBehaviour
    private PlayerMoveHandler _playerMoveHandler;
    private EnemyObservable.Settings _enemyObservable;
    private PlayerStateManager _stateManager;
-   private SliceController _controller;
-   
+  
  [Inject]public void Construct(PlayerMoveHandler playerMoveHandler, Player player
-     ,EnemyObservable.Settings enemyObservable,PlayerStateManager stateManager,SliceController sliceController
+     ,EnemyObservable.Settings enemyObservable,PlayerStateManager stateManager
     )
  {
        _player = player;
        _playerMoveHandler = playerMoveHandler;
        _enemyObservable = enemyObservable;
        _stateManager = stateManager;
-       _controller = sliceController;
        
  }
 
  
- private void Awake()
+ private void Start()
   {
       
       this.OnTriggerEnterAsObservable()
-          .Where(_ => _.gameObject.CompareTag("Enemy") & 
+          .Where(_ => _stateManager.CurrentState==PlayerStateManager.PlayerStates.RunningState & _.gameObject.CompareTag("Enemy") & 
                       !_.gameObject.GetComponent<EnemyFacade>().IsDead &
                       !IsLastTarget())
           .Subscribe(_ =>
@@ -58,7 +56,8 @@ public class PlayerColliderHandler: MonoBehaviour
           .Subscribe(_ =>
           {
               _stateManager.ChangeState(PlayerStateManager.PlayerStates.FinalState);
-              _.gameObject.GetComponent<SkinnedMeshRenderer>().enabled=false;
+              _.gameObject.GetComponent<EnemyFacade>().MeshRenderer.enabled=false;
+             
           });
   }
 

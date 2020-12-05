@@ -9,7 +9,7 @@ public class EnemyInstaller : MonoInstaller
   
     public override void InstallBindings()
     {
-        Container.Bind<EnemyModel>().AsSingle().WithArguments(_settings.Rigidbody, _settings.Animator);
+        Container.Bind<EnemyModel>().AsSingle().WithArguments(_settings.Rigidbody, _settings.Animator,_settings.SkinnedMeshRenderer);
         Container.BindInterfacesTo<EnemyDeathHandler>().AsSingle();
         Container.BindInstance(_deathSettings).AsSingle();
     
@@ -20,5 +20,6 @@ public class EnemyInstaller : MonoInstaller
     {
         public Rigidbody Rigidbody;
         public Animator Animator;
+        public SkinnedMeshRenderer SkinnedMeshRenderer;
     }
 }
