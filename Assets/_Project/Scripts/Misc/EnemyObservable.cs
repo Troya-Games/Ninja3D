@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UniRx;
 public class EnemyObservable
 {
     
-
+    
     [Serializable]
     public class Settings
     {

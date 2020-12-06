@@ -46,8 +46,9 @@ public class PlayerInputAndPathHandler: IInitializable
                 {
                         switch (touch.phase)
                         {
-                            case TouchPhase.Began:
-                                return CheckRayCast();
+                               
+                                case TouchPhase.Began:
+                                    return CheckRayCast();
                         } 
                 }
 

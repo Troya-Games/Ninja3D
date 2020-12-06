@@ -42,11 +42,7 @@ public class SliceController : MonoBehaviour
 		MeshSlicer.totalHit = 0;
 		MeshSlicer.totalGameObjects.Clear();
 	}
-
-	private void OnDisable()
-	{
-		_healthImage.enabled = false;
-	}
+	
 
 	void Awake()
 	{

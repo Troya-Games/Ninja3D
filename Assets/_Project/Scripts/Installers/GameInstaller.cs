@@ -1,5 +1,6 @@
 using System;
 using Miscs;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Installers
@@ -18,7 +19,9 @@ namespace Installers
 
             Container.BindInterfacesAndSelfTo<EnemyObservable>().AsSingle();
             Container.BindInterfacesTo<FinalEnemySetter>().AsSingle();
-            Container.BindInstance(_SceneMonoSettings.UIMANAGER_settings).AsSingle();
+            Container.BindInterfacesTo<UIManager>().AsSingle();
+            Container.BindInstance(_SceneMonoSettings.UImanagerStateUISettings).AsSingle();
+            Container.BindInstance(_SceneMonoSettings.UIManagerSkullUISettings).AsSingle();
             Container.BindInstance(_SceneMonoSettings.EnemyObservableSettings).AsSingle();
             Container.BindInstance(_SceneMonoSettings.FinalEnemySettings).AsSingle();
           
@@ -27,7 +30,8 @@ namespace Installers
         [Serializable]
         public class SceneMonoSettings
         {
-            public UIManager.Settings UIMANAGER_settings;
+            public UIManager.StateUISettings UImanagerStateUISettings;
+            public UIManager.SkullUISettings UIManagerSkullUISettings;
             public EnemyObservable.Settings EnemyObservableSettings;
             public FinalEnemySetter.Settings FinalEnemySettings;
         }

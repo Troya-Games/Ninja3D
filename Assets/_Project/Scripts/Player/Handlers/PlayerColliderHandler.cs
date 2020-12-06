@@ -57,7 +57,7 @@ public class PlayerColliderHandler: MonoBehaviour
           {
               _stateManager.ChangeState(PlayerStateManager.PlayerStates.FinalState);
               _.gameObject.GetComponent<EnemyFacade>().MeshRenderer.enabled=false;
-             
+              _.gameObject.tag = "Dead";
           });
   }
 

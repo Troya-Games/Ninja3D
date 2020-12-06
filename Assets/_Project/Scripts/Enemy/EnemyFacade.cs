@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
@@ -6,7 +7,9 @@ using Zenject;
 public class EnemyFacade : MonoBehaviour
 {
     EnemyModel _model;
-        
+
+   
+
     [Inject]
     public void Construct(EnemyModel enemyModel)
     {
@@ -41,5 +44,6 @@ public class EnemyFacade : MonoBehaviour
 
     public SkinnedMeshRenderer MeshRenderer => _model.MeshRenderer;
     
+
 
 }

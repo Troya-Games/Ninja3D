@@ -1,4 +1,5 @@
-﻿using PlayerBehaviors;
+﻿using Miscs;
+using PlayerBehaviors;
 using UnityEngine;
 
 namespace PlayerState
@@ -6,15 +7,16 @@ namespace PlayerState
     public class RunningState : IState
     {
         private readonly Player _player;
+        private UIManager.StateUISettings _uıSettings;
 
-        RunningState(Player player)
+        RunningState(Player player,UIManager.StateUISettings uıSettings)
         {
             _player = player;
+            _uıSettings = uıSettings;
         }
    
         public void EnterState()
         {
-            Debug.Log("RunnigStateEnter");
             _player.LineRenderer.enabled = false;
             _player.GetAnimator.Play("RUNState");
 
@@ -23,6 +25,7 @@ namespace PlayerState
 
         public void ExitState()
         {
+            _uıSettings._gameInUI.SetActive(false);
         }
 
    

@@ -49,5 +49,7 @@ public class EnemyModel
     public Rigidbody RigidBody { get; }
     
     public SkinnedMeshRenderer MeshRenderer { get; }
+    
+   
 
 }

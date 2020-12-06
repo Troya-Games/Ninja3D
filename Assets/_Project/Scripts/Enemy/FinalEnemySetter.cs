@@ -41,6 +41,7 @@ public class FinalEnemySetter: IInitializable
          {
             x.Last().tag = "Final"; 
             SetFinalEnemy();
+            
          });
    }
 

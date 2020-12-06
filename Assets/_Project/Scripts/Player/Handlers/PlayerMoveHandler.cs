@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using PlayerBehaviors;
 using PlayerState;
 using UniRx;
@@ -30,24 +31,38 @@ public class PlayerMoveHandler : IInitializable
     public void Initialize()
     {
         _tickableManager.TickStream
-            .Where(x => AllEnemiesTargeted() & CanMove())
+            .Where(x => AllEnemiesTargeted())
             .Subscribe(x =>
             {
-                _stateManager.ChangeState(PlayerStateManager.PlayerStates.RunningState);
-                MoveToEnemy();
+                if (_moveEnum==MoveEnum.beforeMove)
+                {
+                    Observable.Timer(TimeSpan.FromSeconds(0.75f))
+                        .Subscribe(y=>
+                        {
+                            _moveEnum = MoveEnum.canMove;
+                        });
+                }
+                if (CanMove())
+                {
+                    MoveToEnemy();
+                    _stateManager.ChangeState(PlayerStateManager.PlayerStates.RunningState);
+                }
+                
+                
             });
     }
 
     private void MoveToEnemy()
     {
+       
         _moveEnum = MoveEnum.moving;
         
         var CurrentEnemy = _enemyObservable._targetedEnemyList[_enemyObservable._currentTarget];
         
         Vector3 relativePos = CurrentEnemy.transform.position -  _player.transform.position;
         Quaternion toRotation = Quaternion.LookRotation(relativePos);
-        _moveSequence.Append(_player.transform.DOMove(CurrentEnemy.transform.position,1.5f).SetEase(Ease.InQuint));
-        _rotationSequence.Append(_player.transform.DORotate(toRotation.eulerAngles, 1));
+        _moveSequence.Append(_player.transform.DOMove(CurrentEnemy.transform.position,1.25f).SetEase(Ease.InQuint));
+        _rotationSequence.Append(_player.transform.DORotate(toRotation.eulerAngles, 0.5f));
     }
     
     
@@ -75,6 +90,7 @@ public class PlayerMoveHandler : IInitializable
 
     public enum MoveEnum
     {
+        beforeMove,
         canMove,
         moving,
         finished,
