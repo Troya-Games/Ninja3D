@@ -20,7 +20,7 @@ public class FinalState : IState
     {
          DOTween.KillAll();
         _player.RigidBody.ResetVelocity();
-        _player.Position-=4* _player.Collider.transform.forward;
+        _player.Position-=2* _player.Collider.transform.forward;
       
         _player.GetAnimator.Play("FINALState");
         _finalEnemySetter.FinalEnemy.SetActive(true);
