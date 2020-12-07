@@ -32,8 +32,9 @@ public class PlayerColliderHandler: MonoBehaviour
   {
       
       this.OnTriggerEnterAsObservable()
-          .Where(_ => _stateManager.CurrentState==PlayerStateManager.PlayerStates.RunningState & _.gameObject.CompareTag("Enemy") & 
-                      !_.gameObject.GetComponent<EnemyFacade>().IsDead &
+          .Where(_ => _stateManager.CurrentState==PlayerStateManager.PlayerStates.RunningState && 
+                      _.gameObject.CompareTag("Enemy") && 
+                      !_.gameObject.GetComponent<EnemyFacade>().IsDead &&
                       !IsLastTarget())
           .Subscribe(_ =>
           {
