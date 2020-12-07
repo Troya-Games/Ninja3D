@@ -1,4 +1,5 @@
-﻿using PlayerBehaviors;
+﻿using DG.Tweening;
+using PlayerBehaviors;
 using UnityEngine;
 
 namespace PlayerState
@@ -14,7 +15,10 @@ namespace PlayerState
         public void EnterState()
         {
 
+            DOTween.KillAll();
             _player.GetAnimator.Play("DEATHState");
+            _player.RigidBody.ResetVelocity();
+            
             Debug.Log("PlayerDeadStateEnter");
         }
 
