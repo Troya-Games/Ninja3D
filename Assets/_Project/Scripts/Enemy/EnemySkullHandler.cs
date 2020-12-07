@@ -5,15 +5,17 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 using DG.Tweening;
+using Object = UnityEngine.Object;
+
 public class EnemySkullHandler:IInitializable
 {
     private EnemyModel _model;
     private TickableManager _tickableManager;
-    private Setted _setted;
+    private skullSetState _skullSetState;
+    private dieCheck _dieCheck;
     private Settings _settings;
     private Tween alltween;
     private Tween alltween1;
-    private Sequence _skullSequence;
     private EnemyObservable.Settings _enemyObservable;
 
     private Vector3 _defaultSkullTransform;
@@ -24,7 +26,6 @@ public class EnemySkullHandler:IInitializable
         _tickableManager = tickableManager;
         _settings = settings;
         _enemyObservable = observable;
-        _skullSequence = DOTween.Sequence();
         _defaultSkullTransform = settings.SkullGO.transform.localPosition;
 
     }
@@ -32,11 +33,11 @@ public class EnemySkullHandler:IInitializable
     public void Initialize()
     {
         _tickableManager.TickStream.Select(x => _model.IsTargeted)
-            .Where(x => x.Equals(true)& _setted==Setted.NotSetted)
+            .Where(x => x.Equals(true)& _skullSetState==skullSetState.NotSetted)
             .Subscribe(x =>
             {
                 var skullTransform=_settings.SkullGO.transform;
-                _setted = Setted.Setted;
+                _skullSetState = skullSetState.Setted;
                 _settings.SkullGO.SetActive(true);
               alltween=(skullTransform
                     .DOLocalRotate(new Vector3(0, 360, 0), 3, 
@@ -49,19 +50,28 @@ public class EnemySkullHandler:IInitializable
                       _settings.SkullGO.transform.rotation = new Quaternion(0, 0, 0, 0);
                   });
             });
-        _tickableManager.TickStream.Select(x => _model.IsTargeted).Where(x => x.Equals(false)&_setted==Setted.Setted)
+        _tickableManager.TickStream.Select(x => _model.IsTargeted).Where(x => x.Equals(false)&_skullSetState==skullSetState.Setted)
             .Subscribe(x =>
                 {
                     alltween.Kill();
                     alltween1.Kill();
-                    _setted = Setted.NotSetted;
+                    _skullSetState = skullSetState.NotSetted;
                     _settings.SkullGO.SetActive(false);
                 }
             );
         _tickableManager.TickStream
             .Select(x=>_model.IsDead)
-            .Where(x=> x.Equals(true))
-            .Subscribe(x=>_settings.SkullGO.SetActive(false));
+            .Where(x=> x.Equals(true)& _dieCheck==dieCheck.alive)
+            .Subscribe(x=>
+            {
+                _dieCheck = dieCheck.dead;
+                var go = Object.Instantiate(_settings.skullPrefab,
+                    Camera.main.WorldToScreenPoint(_settings.SkullGO.transform.position),
+                    _settings.skullImagePanel.transform.rotation, _settings.skullImagePanel.transform);
+                go.transform.DOMove(_settings.skullImagePanel.position,0.5f)
+                    .SetEase(Ease.InCirc);
+                _settings.SkullGO.SetActive(false);
+            });
 
         _tickableManager.TickStream
             .Select(x => _model.RigidBody.gameObject.tag)
@@ -69,17 +79,23 @@ public class EnemySkullHandler:IInitializable
             .Subscribe(x =>_settings.SkullGO.SetActive(false));
     }
     
-    private enum Setted
+    private enum skullSetState
     {
         NotSetted,
         Setted,
     }
 
-    
+    private enum dieCheck
+    {
+        alive,
+        dead,
+    }
 
     [Serializable]
     public class Settings
     {
         public GameObject SkullGO;
+        public GameObject skullPrefab;
+        public RectTransform skullImagePanel;
     }
 }

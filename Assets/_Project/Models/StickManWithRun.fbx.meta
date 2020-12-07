@@ -42,7 +42,7 @@ ModelImporter:
       lastFrame: 19
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: 0.9
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
@@ -98,7 +98,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0

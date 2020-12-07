@@ -78,10 +78,12 @@ public class SliceController : MonoBehaviour
 				{
 					if (_settingsEnum == SettingsInstalled.NotInstalled)
 					{
+
 						_FinalGameObject?.transform.LookAt(_playerFacade.transform);
 						_healthImage.enabled = true;
 						_Objects = MeshSlicer.totalGameObjects;
 						_settingsEnum = SettingsInstalled.Installed;
+							
 					}
 					
 					foreach (var touch in x) 

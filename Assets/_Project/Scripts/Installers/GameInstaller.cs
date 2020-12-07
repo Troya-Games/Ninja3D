@@ -22,6 +22,7 @@ namespace Installers
             Container.BindInterfacesTo<UIManager>().AsSingle();
             Container.BindInstance(_SceneMonoSettings.UImanagerStateUISettings).AsSingle();
             Container.BindInstance(_SceneMonoSettings.UIManagerSkullUISettings).AsSingle();
+            Container.BindInstance(_SceneMonoSettings.UIManagerParticleEffects).AsSingle();
             Container.BindInstance(_SceneMonoSettings.EnemyObservableSettings).AsSingle();
             Container.BindInstance(_SceneMonoSettings.FinalEnemySettings).AsSingle();
           
@@ -32,6 +33,7 @@ namespace Installers
         {
             public UIManager.StateUISettings UImanagerStateUISettings;
             public UIManager.SkullUISettings UIManagerSkullUISettings;
+            public UIManager.ParticleEffects UIManagerParticleEffects;
             public EnemyObservable.Settings EnemyObservableSettings;
             public FinalEnemySetter.Settings FinalEnemySettings;
         }

@@ -25,9 +25,10 @@ namespace Miscs
         {
             _tickableManager.TickStream.Subscribe(x =>
             {
-                _skullUISettings._targetedEnemyText.text =
-                    ((_enemyObservable._targetedEnemyList.Count-1).ToString() + "/" +
-                     _enemyObservable._totalEnemyCount.ToString());
+                _skullUISettings._targetedEnemyText.text = 
+                    _enemyObservable._deadEnemyCount 
+                    + "/" +
+                    _enemyObservable._totalEnemyCount;
             });
 
         }
@@ -43,6 +44,12 @@ namespace Miscs
         public GameObject _gameInUI;
         public GameObject _gameDeadUI;
         public GameObject _gameFinishUI;
+    }
+    
+    [Serializable]
+    public class  ParticleEffects
+    {
+        public ParticleSystem _finishParticle;
     }
 
     [Serializable]

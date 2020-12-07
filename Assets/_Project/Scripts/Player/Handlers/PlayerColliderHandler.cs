@@ -59,6 +59,9 @@ public class PlayerColliderHandler: MonoBehaviour
               _.gameObject.GetComponent<EnemyFacade>().MeshRenderer.enabled=false;
               _.gameObject.tag = "Dead";
           });
+      this.OnTriggerEnterAsObservable()
+          .Where(x => x.gameObject.CompareTag("DangerZone"))
+          .Subscribe(x => _stateManager.ChangeState(PlayerStateManager.PlayerStates.DeadState));
   }
 
   #region Conditions
