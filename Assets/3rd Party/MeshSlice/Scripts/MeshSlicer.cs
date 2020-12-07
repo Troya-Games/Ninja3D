@@ -261,7 +261,7 @@ public static class MeshSlicer
 				go.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 			}
 			
-			slice.GetComponent<Rigidbody>().AddExplosionForce(5,obj.transform.position,360);
+			slice.GetComponent<Rigidbody>().AddExplosionForce(115,obj.transform.position,360);
 
 		}
 	}
