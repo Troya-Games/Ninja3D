@@ -92,7 +92,7 @@ public class PlayerInputAndPathHandler: IInitializable
     private bool CheckRayCast()
     {
         Ray camRay = _camera.ScreenPointToRay(Input.touches[0].position);
-        if (Physics.Raycast(camRay, out var hit, 50, layer_mask))
+        if (Physics.Raycast(camRay, out var hit, 150, layer_mask))
         {
             _enemyHit = hit;
             return true;
