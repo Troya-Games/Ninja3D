@@ -21,6 +21,7 @@ namespace PlayerState
             DOTween.KillAll();
             _player.GetAnimator.Play("DEATHState");
             _player.RigidBody.ResetVelocity();
+            _player.RigidBody.constraints = RigidbodyConstraints.FreezeAll;
             _uıSettings._gameDeadUI.SetActive(true);
         }
 

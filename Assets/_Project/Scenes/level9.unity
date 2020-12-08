@@ -4232,9 +4232,10 @@ GameObject:
   - component: {fileID: 513474620}
   - component: {fileID: 513474622}
   - component: {fileID: 513474621}
+  - component: {fileID: 513474623}
   m_Layer: 0
   m_Name: SM_Env_Fence_07 (1)
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4302,6 +4303,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513474619}
   m_Mesh: {fileID: 4300000, guid: c93a99c658eed0348a9f3fe009c4df69, type: 3}
+--- !u!65 &513474623
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513474619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5651715, y: 1.0210451, z: 0.27351388}
+  m_Center: {x: 1.2671671, y: 0.5105221, z: 0.00006961825}
 --- !u!1 &513804628
 GameObject:
   m_ObjectHideFlags: 0
@@ -13143,7 +13157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4335823442077994385, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.060555995
+      value: 0.060556024
       objectReference: {fileID: 0}
     - target: {fileID: 4335823442077994385, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_LocalRotation.y
@@ -13323,15 +13337,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6746676413905785249, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.102466345
+      value: 0.10246633
       objectReference: {fileID: 0}
     - target: {fileID: 6746676413905785249, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3815851
+      value: 0.38158506
       objectReference: {fileID: 0}
     - target: {fileID: 6746676413905785249, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.2091257
+      value: -0.20912571
       objectReference: {fileID: 0}
     - target: {fileID: 6746676413905785250, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_Follow
@@ -15915,9 +15929,10 @@ GameObject:
   - component: {fileID: 1796780043}
   - component: {fileID: 1796780045}
   - component: {fileID: 1796780044}
+  - component: {fileID: 1796780046}
   m_Layer: 0
   m_Name: SM_Env_Fence_07 (3)
-  m_TagString: Untagged
+  m_TagString: DangerZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -15985,6 +16000,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1796780042}
   m_Mesh: {fileID: 4300000, guid: c93a99c658eed0348a9f3fe009c4df69, type: 3}
+--- !u!65 &1796780046
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796780042}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5651717, y: 1.0210451, z: 0.27351388}
+  m_Center: {x: 1.2671669, y: 0.51052207, z: 0.00006961825}
 --- !u!1 &1820231938
 GameObject:
   m_ObjectHideFlags: 0
