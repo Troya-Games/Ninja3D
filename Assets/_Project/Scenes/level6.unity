@@ -7744,6 +7744,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912144295}
   m_Mesh: {fileID: 4300000, guid: c93a99c658eed0348a9f3fe009c4df69, type: 3}
+--- !u!224 &913495919 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3983533360068625503, guid: 4102cb5ed7227b8458b6e705785fc6a6, type: 3}
+  m_PrefabInstance: {fileID: 597980638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &916798596
 GameObject:
   m_ObjectHideFlags: 0
@@ -9776,7 +9781,7 @@ PrefabInstance:
     - target: {fileID: 7907885733778479064, guid: b98bcb7a71edf4545aa42db88c374d7c, type: 3}
       propertyPath: _skullSettings.skullImagePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 913495919}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98bcb7a71edf4545aa42db88c374d7c, type: 3}
 --- !u!1 &1135735187
@@ -13062,7 +13067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4335823442077994385, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.4146597
+      value: -0.41465968
       objectReference: {fileID: 0}
     - target: {fileID: 6746676413000857193, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15719,7 +15724,7 @@ PrefabInstance:
     - target: {fileID: 7907885733778479064, guid: b98bcb7a71edf4545aa42db88c374d7c, type: 3}
       propertyPath: _skullSettings.skullImagePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 913495919}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98bcb7a71edf4545aa42db88c374d7c, type: 3}
 --- !u!1 &1769746306
@@ -16147,7 +16152,7 @@ PrefabInstance:
     - target: {fileID: 7907885733778479064, guid: b98bcb7a71edf4545aa42db88c374d7c, type: 3}
       propertyPath: _skullSettings.skullImagePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 913495919}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98bcb7a71edf4545aa42db88c374d7c, type: 3}
 --- !u!1 &1840214917
@@ -21553,7 +21558,7 @@ PrefabInstance:
     - target: {fileID: 7907885733778479064, guid: b98bcb7a71edf4545aa42db88c374d7c, type: 3}
       propertyPath: _skullSettings.skullImagePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 913495919}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b98bcb7a71edf4545aa42db88c374d7c, type: 3}
 --- !u!4 &7930214443299003814
