@@ -40,6 +40,7 @@ public class PlayerColliderHandler: MonoBehaviour
           {
               if (!_.GetComponent<EnemyFacade>().IsDead)
               {
+                  
                   _.gameObject.GetComponent<EnemyFacade>().IsDead = true;
                   _playerMoveHandler._moveEnum = PlayerMoveHandler.MoveEnum.canMove;
                   _enemyObservable._deadEnemyCount++;
@@ -50,6 +51,7 @@ public class PlayerColliderHandler: MonoBehaviour
                       return;
                   }
                   _enemyObservable._currentTarget++;
+                  _enemyObservable._targetedEnemyList.Remove(_.gameObject);
               }
           });
 

@@ -31,12 +31,11 @@ public class PlayerMoveHandler : IInitializable
     public void Initialize()
     {
         _tickableManager.TickStream
-            .Where(x => AllEnemiesTargeted())
             .Subscribe(x =>
             {
-                if (_moveEnum==MoveEnum.beforeMove)
+                if (_moveEnum==MoveEnum.beforeMove& AllEnemiesTargeted())
                 {
-                    Observable.Timer(TimeSpan.FromSeconds(0.75f))
+                    Observable.Timer(TimeSpan.FromSeconds(0.25f))
                         .Subscribe(y=>
                         {
                             _moveEnum = MoveEnum.canMove;
@@ -57,7 +56,7 @@ public class PlayerMoveHandler : IInitializable
        
         _moveEnum = MoveEnum.moving;
         
-        var CurrentEnemy = _enemyObservable._targetedEnemyList[_enemyObservable._currentTarget];
+        var CurrentEnemy = _enemyObservable._targetedEnemyList[1];
         
         Vector3 relativePos = CurrentEnemy.transform.position -  _player.transform.position;
         Quaternion toRotation = Quaternion.LookRotation(relativePos);

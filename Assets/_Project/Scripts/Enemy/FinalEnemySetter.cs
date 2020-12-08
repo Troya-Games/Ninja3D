@@ -35,11 +35,11 @@ public class FinalEnemySetter: IInitializable
    public void Initialize()
    {
       _tickableManager.TickStream
-         .Select(x => _enemyObservable._targetedEnemyList)
-         .Where(x => x.Count == _enemyObservable._totalEnemyCount+1 & _stateEnum== StateEnum.nonsetted )
+         .Select(x => _enemyObservable._currentTarget)
+         .Where(x => x == _enemyObservable._totalEnemyCount & _stateEnum== StateEnum.nonsetted )
          .Subscribe(x =>
          {
-            x.Last().tag = "Final"; 
+            _enemyObservable._targetedEnemyList[1].tag = "Final";
             SetFinalEnemy();
             
          });
@@ -47,14 +47,13 @@ public class FinalEnemySetter: IInitializable
 
    private void SetFinalEnemy()
    {
-      var _lastEnemy = _enemyObservable._targetedEnemyList.Last().gameObject.transform;
+      var _lastEnemy = _enemyObservable._targetedEnemyList[1].gameObject.transform;
       _stateEnum = StateEnum.setted;
 
      _settings.FinalEnemy.transform.SetPositionAndRotationTo(_lastEnemy);
-
-      //_settings.FinalEnemy.transform.ResetLocal();
-
-      _settings.FinalParticle.transform.SetPositionAndRotationTo(_lastEnemy);
+     _settings.FinalParticle.transform.SetPositionAndRotationTo(_lastEnemy);
+     _settings.FinalParticle.transform.SetOnlyLocalYValue(-1.5f);
+      
    }
    
    private enum StateEnum

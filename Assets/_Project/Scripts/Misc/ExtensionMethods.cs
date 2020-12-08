@@ -28,5 +28,10 @@ public static class ExtensionMethods
         transform.position = to.position;
         transform.rotation = to.rotation;
     }
+
+    public static void SetOnlyLocalYValue(this Transform transform, float y)
+    {
+        transform.localPosition = new Vector3(transform.localPosition.x, y, transform.localPosition.z);
+    }
     
 }

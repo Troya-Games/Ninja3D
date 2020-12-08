@@ -40,7 +40,7 @@ public class PlayerInputAndPathHandler: IInitializable
         _ınputObservable=_tickableManager.TickStream.Select(x => Input.touches)
             .Where(x =>
             {
-                if (_stateManager.CurrentState!= PlayerStateManager.PlayerStates.IdleState)
+                if (_stateManager.CurrentState!= PlayerStateManager.PlayerStates.IdleState | PathAlreadyCreated())
                 {return false;}
                 foreach (var touch in x)
                 {
@@ -105,6 +105,16 @@ public class PlayerInputAndPathHandler: IInitializable
         if (_enemyObservable._targetedEnemyList[_enemyObservable._targetedEnemyList.LastIndex()]==_enemyHit.collider.gameObject)
         {
             
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool PathAlreadyCreated()
+    {
+        if (_enemyObservable._targetedEnemyList.Count-1==_enemyObservable._totalEnemyCount)
+        {
             return true;
         }
 

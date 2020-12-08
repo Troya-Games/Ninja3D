@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Miscs;
 using PlayerBehaviors;
 using UnityEngine;
 
@@ -7,10 +8,12 @@ namespace PlayerState
     public class DeadState : IState
     {
         private Player _player;
+        private UIManager.StateUISettings _uıSettings;
 
-        DeadState(Player player)
+        DeadState(Player player,UIManager.StateUISettings uıSettings)
         {
             _player = player;
+            _uıSettings = uıSettings;
         }
         public void EnterState()
         {
@@ -18,8 +21,7 @@ namespace PlayerState
             DOTween.KillAll();
             _player.GetAnimator.Play("DEATHState");
             _player.RigidBody.ResetVelocity();
-            
-            Debug.Log("PlayerDeadStateEnter");
+            _uıSettings._gameDeadUI.SetActive(true);
         }
 
         public void ExitState()
@@ -35,5 +37,5 @@ namespace PlayerState
         {
         }
     }
-}
+}   
 
