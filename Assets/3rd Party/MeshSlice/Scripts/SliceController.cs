@@ -147,7 +147,7 @@ public class SliceController : MonoBehaviour
 							}
 
 
-							if (MeshSlicer.totalHit > 3)
+							if (MeshSlicer.totalHit > 5)
 							{
 								this.enabled = false;
 								_deathParticle.Play();

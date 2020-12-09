@@ -82,7 +82,11 @@ public class PlayerInputAndPathHandler: IInitializable
     {
         for (int j = 0; j < _enemyObservable._targetedEnemyList.Count; j++)
         {
-            _lineRenderer.SetPosition(j,_enemyObservable._targetedEnemyList[j].transform.position);
+            var newPos=new Vector3(_enemyObservable._targetedEnemyList[j].transform.position.x,
+                _enemyObservable._targetedEnemyList[j].transform.position.y+1,
+                _enemyObservable._targetedEnemyList[j].transform.position.z);
+            
+            _lineRenderer.SetPosition(j,newPos);
         }
         
     }

@@ -22,8 +22,8 @@ namespace PlayerState
         {
             _player.GetAnimator.Play("FINISHState");
             _player.Weapons[0].SetActive(false);
-            _player.Weapons[1].transform.localPosition = new Vector3(0.157f, -0.072f, -0.012f);
-            _player.Weapons[1].transform.localEulerAngles = new Vector3(65.43f, 188.663f, -98.314f);
+            _player.Weapons[1].transform.localPosition = new Vector3(8.4f, 8.5f, -1.7f);
+            _player.Weapons[1].transform.localEulerAngles = new Vector3(169.983f, -113.502f, -309.758f);
             Observable.Timer(TimeSpan.FromSeconds(1.2)).Subscribe(x =>
             {
                 _particle._finishParticle.Play();
