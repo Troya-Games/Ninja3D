@@ -5,6 +5,7 @@ using UnityEngine;
 public class testo : MonoBehaviour
 {
     private int abbii;
+    private int beybii;
     void Start()
     {
         
