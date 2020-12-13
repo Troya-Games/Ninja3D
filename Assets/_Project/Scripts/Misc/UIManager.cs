@@ -44,7 +44,8 @@ namespace Miscs
         public GameObject _gameInUI;
         public GameObject _gameDeadUI;
         public GameObject _gameFinishUI;
-    }
+        public bool _level05; //TODOO BUNE AQ
+    } 
     
     [Serializable]
     public class  ParticleEffects

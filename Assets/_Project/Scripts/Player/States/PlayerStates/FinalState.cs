@@ -23,6 +23,7 @@ public class FinalState : IState
         _player.Position-=6* _player.Collider.transform.forward;
       
         _player.GetAnimator.Play("FINALState");
+        _finalEnemySetter.FinalEnemy.GetComponent<Rigidbody>().ResetVelocity();
         _finalEnemySetter.FinalEnemy.SetActive(true);
 
     }

@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.21176471, g: 0.22745098, b: 0.25882354, a: 1}
+  m_AmbientSkyColor: {r: 0.42352942, g: 0.45490196, b: 0.5176471, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -1258,6 +1258,7 @@ MonoBehaviour:
       _gameInUI: {fileID: 1068625855}
       _gameDeadUI: {fileID: 597980640}
       _gameFinishUI: {fileID: 597980641}
+      _level05: 0
     UIManagerSkullUISettings:
       _targetedEnemyText: {fileID: 1334928940}
     UIManagerParticleEffects:
@@ -3313,8 +3314,8 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3983533359304384588, guid: 4102cb5ed7227b8458b6e705785fc6a6, type: 3}
   m_PrefabInstance: {fileID: 597980638}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_GameObject: {fileID: 597980643}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -4909,6 +4910,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &597980643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3983533359304384586, guid: 4102cb5ed7227b8458b6e705785fc6a6, type: 3}
+  m_PrefabInstance: {fileID: 597980638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &599569369
 GameObject:
   m_ObjectHideFlags: 0
@@ -12558,7 +12564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6746676413905785249, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.103580154
+      value: -0.10358016
       objectReference: {fileID: 0}
     - target: {fileID: 6746676413905785249, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_LocalRotation.y
@@ -12566,7 +12572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6746676413905785249, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.16701867
+      value: -0.16701868
       objectReference: {fileID: 0}
     - target: {fileID: 6746676413905785250, guid: 5bed87416b7ad24478bdfebf33c95032, type: 3}
       propertyPath: m_Follow
@@ -17944,6 +17950,10 @@ PrefabInstance:
       propertyPath: _deathParticle
       value: 
       objectReference: {fileID: 1262888355}
+    - target: {fileID: 7136309835379015699, guid: 8444826777c085c42bc5d2ee9630b01c, type: 3}
+      propertyPath: _healthImageGO
+      value: 
+      objectReference: {fileID: 597980643}
     - target: {fileID: 7136309835379015699, guid: 8444826777c085c42bc5d2ee9630b01c, type: 3}
       propertyPath: _FinalGameObject
       value: 

@@ -251,21 +251,19 @@ public static class MeshSlicer
 		sliceMeshCollider.convex = true;
 		sliceMeshCollider.material = obj.GetComponent<Collider>().material;
 
-		//slice.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-		slice.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+		slice.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 		slice.GetComponent<Rigidbody>().mass = 125;
-		slice.GetComponent<Rigidbody>().AddForce(Vector3.up*25);
 
 		totalGameObjects.Add(slice);
 		//TODO BURLAR DÜZELTİRLİR
-		if (totalHit>5) 
+		if (totalHit>3) 
 		{
 			foreach (GameObject go in totalGameObjects)
 			{
 				go.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 			}
 			
-			slice.GetComponent<Rigidbody>().AddExplosionForce(1115,obj.transform.position,360);
+			slice.GetComponent<Rigidbody>().AddExplosionForce(11115,obj.transform.position,360);
 
 		}
 	}

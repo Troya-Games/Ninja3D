@@ -13,7 +13,7 @@ public class SliceController : MonoBehaviour
 	
 	
 	public List<GameObject> _Objects = new List<GameObject>();
-	public Image _healthImage;
+	public GameObject _healthImageGO;
 	public ParticleSystem _deathParticle;
 	public PlayerFacade _playerFacade;
 	public GameObject _FinalGameObject;
@@ -42,7 +42,12 @@ public class SliceController : MonoBehaviour
 		MeshSlicer.totalHit = 0;
 		MeshSlicer.totalGameObjects.Clear();
 	}
-	
+
+	private void OnDisable()
+	{
+		_healthImageGO?.SetActive(false);
+	}
+
 
 	void Awake()
 	{
@@ -80,7 +85,7 @@ public class SliceController : MonoBehaviour
 					{
 
 						_FinalGameObject?.transform.LookAt(_playerFacade.transform);
-						_healthImage.enabled = true;
+						_healthImageGO.SetActive(true);
 						_Objects = MeshSlicer.totalGameObjects;
 						_settingsEnum = SettingsInstalled.Installed;
 							
@@ -147,7 +152,7 @@ public class SliceController : MonoBehaviour
 							}
 
 
-							if (MeshSlicer.totalHit > 5)
+							if (MeshSlicer.totalHit > 3)
 							{
 								this.enabled = false;
 								_deathParticle.Play();
@@ -192,7 +197,7 @@ public class SliceController : MonoBehaviour
 		bool isSliced = false;
 
 		MeshSlicer.totalHit += 1; //TODO 
-		_healthImage.fillAmount -= 0.25f;
+		_healthImageGO.GetComponent<Image>().fillAmount -= 0.25f;
 
 		foreach (SliceableObject sliceableTarget in sliceableTargets)
 		{
