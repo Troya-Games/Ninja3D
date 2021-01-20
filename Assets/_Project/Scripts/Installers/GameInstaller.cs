@@ -25,7 +25,10 @@ namespace Installers
             Container.BindInstance(_SceneMonoSettings.UIManagerParticleEffects).AsSingle();
             Container.BindInstance(_SceneMonoSettings.EnemyObservableSettings).AsSingle();
             Container.BindInstance(_SceneMonoSettings.FinalEnemySettings).AsSingle();
-          
+
+            Container.Bind<LevelLoader>().AsSingle().NonLazy();
+
+
         }
 
         [Serializable]
