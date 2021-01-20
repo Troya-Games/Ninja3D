@@ -353,7 +353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3983533359304384589
 RectTransform:
   m_ObjectHideFlags: 0
@@ -878,7 +878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7739064067502919126
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1453,6 +1453,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinishStateUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2184333109401888615, guid: e3c06581b8e9586478147fae9b202da2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184333109562357175, guid: e3c06581b8e9586478147fae9b202da2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1622039
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3c06581b8e9586478147fae9b202da2, type: 3}
 --- !u!224 &2980003611810774419 stripped
@@ -1569,9 +1577,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3983533359085423866}
     m_Modifications:
+    - target: {fileID: 7921566427639248454, guid: c27ae7ae29588544aa5644188024bdcc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1231772
+      objectReference: {fileID: 0}
     - target: {fileID: 7921566427910068809, guid: c27ae7ae29588544aa5644188024bdcc, type: 3}
       propertyPath: m_Name
       value: DeathStateUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921566427910068809, guid: c27ae7ae29588544aa5644188024bdcc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7921566427910068810, guid: c27ae7ae29588544aa5644188024bdcc, type: 3}
       propertyPath: m_Pivot.x
